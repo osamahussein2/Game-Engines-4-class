@@ -14,6 +14,8 @@ PrimaryEngine::~PrimaryEngine()
 
 PrimaryEngine* PrimaryEngine::GetInstance()
 {
+	// GetInstance function helps run the engine properly
+
 	if (engineInstance.get() == nullptr) {
 		engineInstance.reset(new PrimaryEngine);
 	}
@@ -34,17 +36,19 @@ bool PrimaryEngine::OnCreate(std::string name_, int width_, int height_)
 void PrimaryEngine::Run()
 {
 	while (isRunning) {
-		Update(0.016f);
+		Update(0.016f); // 1 second / 60 frames = 0.016
 		Render();
 	}
 
 	while (!isRunning) {
-		OnDestroy();
+		OnDestroy(); // If isRunning has an error, then use the OnDestroy method to close the engine
 	}
 }
 
 bool PrimaryEngine::GetIsRunning()
 {
+	// Just return isRunning and don't modify it
+
 	return isRunning;
 }
 
@@ -63,6 +67,8 @@ void PrimaryEngine::Render()
 
 void PrimaryEngine::OnDestroy()
 {
+	// Clean up or delete window
+
 	delete window;
 	window = nullptr;
 	SDL_Quit();

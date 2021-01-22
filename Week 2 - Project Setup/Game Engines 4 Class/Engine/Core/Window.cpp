@@ -1,6 +1,6 @@
 #include "Window.h"
 
-Window::Window() : window(nullptr), context(nullptr)
+Window::Window()
 {
 	window = nullptr;
 	context = nullptr;
@@ -49,6 +49,8 @@ bool Window::OnCreate(std::string name_, int width_, int height_)
 
 void Window::OnDestroy()
 {
+	// If the window should close, then use destroy window and delete context code
+
 	SDL_GL_DeleteContext(context);
 	SDL_DestroyWindow(window);
 	window = nullptr;
@@ -56,11 +58,15 @@ void Window::OnDestroy()
 
 int Window::GetWidth() const
 {
+	// No need to modify this as it's a const variable and it's set private
+
 	return 0;
 }
 
 int Window::GetHeight() const
 {
+	// No need to modify this as it's a const variable and it's set private
+
 	return 0;
 }
 
