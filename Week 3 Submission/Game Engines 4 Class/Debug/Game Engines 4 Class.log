@@ -1,0 +1,13 @@
+﻿  Debug.cpp
+  GameInterface.cpp
+  GameScene.cpp
+  Game1.cpp
+  main.cpp
+  Window.cpp
+  PrimaryEngine.cpp
+  Timer.cpp
+C:\Users\osama\source\repos\Game Engines 4 Class\Engine\Core\Timer.cpp(31,36): warning C4244: 'initializing': conversion from 'float' to 'unsigned int', possible loss of data
+  Scene.cpp
+  StartScene.cpp
+  Generating Code...
+  Game Engines 4 Class.vcxproj -> C:\Users\osama\source\repos\Game Engines 4 Class\Debug\Game Engines 4 Class.exe
