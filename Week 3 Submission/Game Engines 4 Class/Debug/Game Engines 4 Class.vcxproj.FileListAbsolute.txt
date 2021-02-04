@@ -1,2 +1,4 @@
 C:\Users\osama\source\repos\Game Engines 4 Class\Debug\Game Engines 4 Class.exe
 C:\Users\osama\source\repos\Game Engines 4 Class\Debug\Game Engines 4 Class.pdb
+D:\Github\Game-Engines-4-class\Week 3 Submission\Game Engines 4 Class\Debug\Game Engines 4 Class.exe
+D:\Github\Game-Engines-4-class\Week 3 Submission\Game Engines 4 Class\Debug\Game Engines 4 Class.pdb

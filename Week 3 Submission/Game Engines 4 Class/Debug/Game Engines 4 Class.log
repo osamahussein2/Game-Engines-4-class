@@ -6,8 +6,9 @@
   Window.cpp
   PrimaryEngine.cpp
   Timer.cpp
-C:\Users\osama\source\repos\Game Engines 4 Class\Engine\Core\Timer.cpp(31,36): warning C4244: 'initializing': conversion from 'float' to 'unsigned int', possible loss of data
+D:\Github\Game-Engines-4-class\Week 3 Submission\Game Engines 4 Class\Engine\Core\Timer.cpp(31,36): warning C4244: 'initializing': conversion from 'float' to 'unsigned int', possible loss of data
   Scene.cpp
   StartScene.cpp
   Generating Code...
-  Game Engines 4 Class.vcxproj -> C:\Users\osama\source\repos\Game Engines 4 Class\Debug\Game Engines 4 Class.exe
+  LINK : D:\Github\Game-Engines-4-class\Week 3 Submission\Game Engines 4 Class\Debug\Game Engines 4 Class.exe not found or not built by the last incremental link; performing full link
+  Game Engines 4 Class.vcxproj -> D:\Github\Game-Engines-4-class\Week 3 Submission\Game Engines 4 Class\Debug\Game Engines 4 Class.exe

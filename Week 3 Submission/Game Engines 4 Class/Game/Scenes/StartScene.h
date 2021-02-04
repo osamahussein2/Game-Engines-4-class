@@ -14,8 +14,6 @@ public:
 	void Update(const float deltaTime_) override;
 	void Render() override;
 
-private:
-	Scene* sceneManager;
 };
 
 #endif // !STARTSCENE_H
