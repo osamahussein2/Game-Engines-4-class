@@ -1,0 +1,12 @@
+﻿  Camera.cpp
+  PrimaryEngine.cpp
+  LightSource.cpp
+  GameObject.cpp
+  Mesh.cpp
+  Model.cpp
+  Game1.cpp
+  GameScene.cpp
+  StartScene.cpp
+  main.cpp
+  Generating Code...
+  Game Engines 4 Class.vcxproj -> C:\Users\osama\source\repos\Game Engines 4 Class\Debug\Game Engines 4 Class.exe
