@@ -35,7 +35,12 @@ void Mesh::Render(Camera* camera_, glm::mat4 transform_)
 	glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(camera_->GetView()));
 	glUniformMatrix4fv(projectionLoc, 1, GL_FALSE, glm::value_ptr(camera_->GetPersective()));
 
-	//glUniformMatrix4fv(viewPositionVectorLoc, 1, GL_FALSE, glm::value_ptr(camera_->ListOfLightSources()));
+	glUniform3fv(viewPositionVectorLoc, 1, GL_FALSE);
+	glUniform3fv(lightPositionLoc, 1, GL_FALSE);
+	glUniform1f(ambientLightLoc, 1); 
+	glUniform1f(diffuseLightLoc, 1);
+	glUniform1f(specularLightLoc, 1);
+	glUniform3fv(lightColourLoc, 1, GL_FALSE);
 
 	glDrawArrays(GL_TRIANGLES, 0, vertexList.size());
 
@@ -75,9 +80,9 @@ void Mesh::GenerateBuffers()
 	textureLoc = glGetUniformLocation(shaderProgram, "inputTexture");
 
 	viewPositionVectorLoc = glGetUniformLocation(shaderProgram, "viewPosition");
-	lightPositionLoc = glGetUniformLocation(shaderProgram, "lightPos"); 
-	ambientLightLoc = glGetUniformLocation(shaderProgram, "ambientLight");
-	diffuseLightLoc = glGetUniformLocation(shaderProgram, "diffuseLight");
-	specularLightLoc = glGetUniformLocation(shaderProgram, "specularLight");
-	lightColourLoc = glGetUniformLocation(shaderProgram, "lightColor");
+	lightPositionLoc = glGetUniformLocation(shaderProgram, "light.lightPos"); 
+	ambientLightLoc = glGetUniformLocation(shaderProgram, "light.ambientLight");
+	diffuseLightLoc = glGetUniformLocation(shaderProgram, "light.diffuseLight");
+	specularLightLoc = glGetUniformLocation(shaderProgram, "light.specularLight");
+	lightColourLoc = glGetUniformLocation(shaderProgram, "light.lightColor");
 }

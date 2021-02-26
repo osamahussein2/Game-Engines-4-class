@@ -7,28 +7,29 @@
 class LightSource
 {
 public:
-	LightSource(glm::vec3 lightPosition_,
+	LightSource(glm::vec3 lightPos_,
 		float ambientLight_, float diffuseLight_, float specularLight_,
-		glm::vec3 lightColour_);
+		glm::vec3 lightColor_);
 	~LightSource();
 
-	glm::vec3 GetPosition();
-	void SetPosition(glm::vec3 position_);
-	glm::vec3 GetLightColour();
-	void SetLightColour(glm::vec3 lightColour_);
-	float GetAmbientLight();
+	glm::vec3 GetPosition() const;
+	void SetPosition(glm::vec3 lightPos_);
+
+	float GetAmbientLight() const;
 	void SetAmbientLight(float ambientLight_);
-	float GetDiffuseLight();
+
+	float GetDiffuseLight() const;
 	void SetDiffuseLight(float diffuseLight_);
+
+	float GetSpecularLight() const;
 	void SetSpecularLight(float specularLight_);
 
-private:
-	glm::vec3 position;
-	glm::vec3 lightColour;
+	glm::vec3 GetLightColor() const;
+	void SetLightColor(glm::vec3 lightColor_);
 
-	float ambientLight;
-	float diffuseLight;
-	float specularLight;
+private:
+	glm::vec3 lightPos, lightColor;
+	float ambientLight, diffuseLight, specularLight;
 };
 
 #endif //!LIGHTSOURCE_H

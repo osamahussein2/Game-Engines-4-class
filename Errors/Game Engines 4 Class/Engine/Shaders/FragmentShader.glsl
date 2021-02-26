@@ -15,10 +15,10 @@ struct LightSource {
     vec3 lightPos;
     vec3 lightColor;
 
-	float ambientLight;
+	float ambientLight; 
 	float diffuseLight;
 	float specularLight;
-} variableName;
+};
 
 uniform LightSource light;
 
@@ -36,7 +36,7 @@ vec3 reflectDir = reflect(-lightDir, norm);
 float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
 vec3 specular = (spec * light.specularLight) * light.lightColor;
 
-vec3 result = ambient + diffuse + specular;
+vec3 result = (ambient + diffuse + specular);
 
 fColour = vec4(result, 1.0f);
 }

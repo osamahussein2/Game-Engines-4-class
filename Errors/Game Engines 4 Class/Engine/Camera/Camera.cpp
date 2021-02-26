@@ -28,14 +28,9 @@ orthographic(glm::mat4()), view(glm::mat4())
 
 Camera::~Camera()
 {
-	light1 = nullptr;
-	delete light1;
-
-	light2 = nullptr;
-	delete light2;
-
-	light3 = nullptr;
-	delete light3;
+	light1;
+	light2;
+	light3;
 }
 
 void Camera::SetPosition(glm::vec3 position_)
@@ -56,11 +51,9 @@ void Camera::AddLightSource(LightSource* lightSource_)
 	
 }
 
-void Camera::ListOfLightSources(LightSource* light1_)
+glm::vec3 Camera::ListOfLightSources() const
 {
-	light1 = light1_;
-	//light2 = light2_;
-	//light3 = light3_;
+	return light1, light2, light3;
 }
 
 glm::mat4 Camera::GetView() const
