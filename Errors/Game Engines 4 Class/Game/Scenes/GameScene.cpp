@@ -18,8 +18,8 @@ bool GameScene::OnCreate()
 {
 	PrimaryEngine::GetInstance()->SetCamera(new Camera());
 	PrimaryEngine::GetInstance()->GetCamera()->SetPosition(glm::vec3(0.0f, 0.0f, 4.0f));
-	HandleTextures::GetInstance()->CreateTextures("CheckerboardTexture",
-		"./Resources/Textures/CheckerboardTexture.png");
+	/*HandleTextures::GetInstance()->CreateTextures("CheckerboardTexture",
+		"./Resources/Textures/CheckerboardTexture.png");*/
 
 	PrimaryEngine::GetInstance()->GetCamera()->AddLightSource(new LightSource(glm::vec3(0.0f, 0.0f, 2.0f), 
 		0.1f, 0.5f, 0.5f,
@@ -28,11 +28,11 @@ bool GameScene::OnCreate()
 
 	// Cube model is implemented here
 
-	Vertex v;
+	/*Vertex v;
 	std::vector<Vertex> vertexList;
-	vertexList.reserve(36);
+	vertexList.reserve(36);*/
 
-	{
+	/*{
 		v.position = glm::vec3(-0.5f, -0.5f, -0.5f);
 		v.normal = glm::vec3(0.0f, 0.0f, -1.0f);
 		v.textureCoordinates = glm::vec2(0.0f, 0.0f);
@@ -248,7 +248,8 @@ bool GameScene::OnCreate()
 		v.textureCoordinates = glm::vec2(0.0f, 0.0f);
 		v.colour = glm::vec3(0.982f, 0.099f, 0.879f);
 		vertexList.push_back(v);
-	}
+	}*/
+
 
 	// I commented out the original code that helped to create the triangle
 
@@ -264,10 +265,13 @@ bool GameScene::OnCreate()
 	// I've added extra lines of code to show how these new functions work (e.g. scale, rotation, angle)
 	// The reason why I included the set angle code is to show the shaders for the different vertices of the cube
 
-	model = new Model(HandleShaders::GetInstance()->GetShader("basicShader"));
-	model->AddMesh(new Mesh(vertexList,
-		HandleTextures::GetInstance()->GetTextures("CheckerboardTexture"),
-		HandleShaders::GetInstance()->GetShader("basicShader")));
+	model = new Model("Resources/Models/Apple.obj", "Resources/Materials/Apple.mtl", 
+		HandleShaders::GetInstance()->GetShader("basicShader"));
+	/*SubMesh subMesh;
+	subMesh.vertexList = vertexList;
+	subMesh.textureID = HandleTextures::GetInstance()->GetTextures("CheckerboardTexture");
+	model->AddMesh(new Mesh(subMesh,
+		HandleShaders::GetInstance()->GetShader("basicShader")));*/
 	//model->SetScale(glm::vec3(0.5f));
 	//model->SetRotation(glm::vec3(90.0f));
 	//model->SetAngle(30.0f);
@@ -281,7 +285,7 @@ bool GameScene::OnCreate()
 
 void GameScene::Update(const float deltaTime_)
 {
-	model->SetAngle(model->GetAngle() + 0.005f);
+	shape->Update(deltaTime_);
 
 	// Update the game scene timer
 	std::cout << "game scene timer: " << deltaTime_ << std::endl;

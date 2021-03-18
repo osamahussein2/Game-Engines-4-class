@@ -8,6 +8,7 @@ c:\users\osama\source\repos\game engines 4 class\debug\timer.obj
 c:\users\osama\source\repos\game engines 4 class\debug\primaryengine.obj
 c:\users\osama\source\repos\game engines 4 class\debug\window.obj
 c:\users\osama\source\repos\game engines 4 class\debug\main.obj
+c:\users\osama\source\repos\game engines 4 class\debug\loadobjmodel.obj
 c:\users\osama\source\repos\game engines 4 class\debug\lightsource.obj
 c:\users\osama\source\repos\game engines 4 class\debug\handletextures.obj
 c:\users\osama\source\repos\game engines 4 class\debug\handleshaders.obj
@@ -17,8 +18,8 @@ c:\users\osama\source\repos\game engines 4 class\debug\gameobject.obj
 c:\users\osama\source\repos\game engines 4 class\debug\gameinterface.obj
 c:\users\osama\source\repos\game engines 4 class\debug\debug.obj
 c:\users\osama\source\repos\game engines 4 class\debug\camera.obj
-c:\users\osama\source\repos\game engines 4 class\debug\game engines 4 class.ilk
 c:\users\osama\source\repos\game engines 4 class\debug\game engines 4 class.exe
+c:\users\osama\source\repos\game engines 4 class\debug\game engines 4 class.ilk
 c:\users\osama\source\repos\game engines 4 class\debug\game engines 4 class.pdb
 c:\users\osama\source\repos\game engines 4 class\debug\game eng.ee69405a.tlog\cl.command.1.tlog
 c:\users\osama\source\repos\game engines 4 class\debug\game eng.ee69405a.tlog\cl.read.1.tlog

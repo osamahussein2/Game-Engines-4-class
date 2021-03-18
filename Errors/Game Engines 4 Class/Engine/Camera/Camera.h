@@ -17,7 +17,7 @@ public:
 	void SetRotation(float yaw_, float pitch_);
 
 	void AddLightSource(LightSource* lightSource_);
-	glm::vec3 ListOfLightSources() const;
+	std::vector<LightSource*> ListOfLightSources() const;
 
 	glm::mat4 GetView() const;
 	glm::mat4 GetPersective() const;
@@ -31,8 +31,8 @@ private:
 	float yaw, pitch;
 	float nearPlane, farPlane;
 	glm::vec3 forward, up, right, worldUp;
-	
-	glm::vec3 light1, light2, light3;
+
+	std::vector<LightSource*> light[2];
 };
 
 #endif // !CAMERA_H

@@ -2,8 +2,13 @@
 
 LightSource::LightSource(glm::vec3 lightPos_,
 	float ambientLight_, float diffuseLight_, float specularLight_,
-	glm::vec3 lightColor_) : ambientLight(0.0f), diffuseLight(0.0f), specularLight(0.0f)
+	glm::vec3 lightColor_)
 {
+	lightPos = lightPos_;
+	ambientLight = ambientLight_;
+	diffuseLight = diffuseLight_;
+	specularLight = specularLight_;
+	lightColor = lightColor_;
 }
 
 LightSource::~LightSource()

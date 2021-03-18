@@ -28,9 +28,23 @@ orthographic(glm::mat4()), view(glm::mat4())
 
 Camera::~Camera()
 {
-	light1;
-	light2;
-	light3;
+	if (light[0].size() > 0) {
+		for (auto light : light[0]) {
+			delete light;
+			light = nullptr; 
+		}
+
+		light[0].clear();
+	}
+
+	if (light[1].size() > 0) {
+		for (auto light1 : light[1]) {
+			delete light1;
+			light1 = nullptr;
+		}
+
+		light[1].clear();
+	}
 }
 
 void Camera::SetPosition(glm::vec3 position_)
@@ -48,12 +62,14 @@ void Camera::SetRotation(float yaw_, float pitch_)
 
 void Camera::AddLightSource(LightSource* lightSource_)
 {
-	
+	light[0].push_back(lightSource_); 
+
+	light[1].push_back(lightSource_);
 }
 
-glm::vec3 Camera::ListOfLightSources() const
+std::vector<LightSource*> Camera::ListOfLightSources() const
 {
-	return light1, light2, light3;
+	return light[0], light[1];
 }
 
 glm::mat4 Camera::GetView() const

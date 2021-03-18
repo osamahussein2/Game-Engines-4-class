@@ -8,7 +8,7 @@ uniform sampler2D inputTexture;
 uniform vec3 viewPosition;
 uniform vec3 cameraPosition;
 
-out vec3 FragPosition;
+in vec3 FragPosition;
 out vec4 fColour;
 
 struct LightSource {
