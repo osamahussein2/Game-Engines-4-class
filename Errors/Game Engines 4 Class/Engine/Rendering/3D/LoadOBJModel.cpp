@@ -97,22 +97,25 @@ void LoadOBJModel::LoadModel(const std::string& filePath_)
 		if (line.substr(0, 2) == "f ") {
 			std::stringstream f(line.substr(2));
 
-			int vertexIndex[3], textureIndex[3], normalIndex[3];
+			unsigned int vertexIndex[3], textureIndex[3], normalIndex[3];
+
+			vertexIndex[0] = 1; vertexIndex[1] = 2; vertexIndex[2] = 3;
+			normalIndex[0] = 1; normalIndex[1] = 1; normalIndex[2] = 1;
 
 			f >> vertexIndex[0] >> textureIndex[0] >> normalIndex[0] >> vertexIndex[1] >> textureIndex[1] >> normalIndex[1]
 				>> vertexIndex[2] >> textureIndex[2] >> normalIndex[2];
 
-			indices.push_back(vertexIndex[0] - 1); 
-			indices.push_back(vertexIndex[1] - 1);
-			indices.push_back(vertexIndex[2] - 1);
-			textureIndices.push_back(textureIndex[0] - 1); 
-			textureIndices.push_back(textureIndex[1] - 1);
-			textureIndices.push_back(textureIndex[2] - 1); 
-			normalIndices.push_back(normalIndex[0] - 1);
-			normalIndices.push_back(normalIndex[1] - 1);
-			normalIndices.push_back(normalIndex[2] - 1);
+			textureIndex[0] = 1; textureIndex[1] = 2; textureIndex[2] = 3;
 
-			PostProcessing();
+			indices.push_back(vertexIndex[0] - 1);
+			textureIndices.push_back(textureIndex[0] - 1);
+			normalIndices.push_back(normalIndex[0] - 1);
+			indices.push_back(vertexIndex[1] - 1);
+			textureIndices.push_back(textureIndex[1] - 1);
+			normalIndices.push_back(normalIndex[1] - 1);
+			indices.push_back(vertexIndex[2] - 1);
+			textureIndices.push_back(textureIndex[2] - 1); 
+			normalIndices.push_back(normalIndex[2] - 1);
 		}
 		// NEW MESH
 		else if (line.substr(0, 7) == "newmtl ") {
