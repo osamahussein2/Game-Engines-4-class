@@ -10,8 +10,10 @@
 
 #include "../Rendering/3D/GameObject.h"
 
+#include "../Rendering/SceneGraph.h"
 #include "Graphics/HandleShaders.h"
 #include "Graphics/HandleTextures.h"
+#include "Graphics/MaterialHandler.h"
 
 #include "../Camera/Camera.h"
 

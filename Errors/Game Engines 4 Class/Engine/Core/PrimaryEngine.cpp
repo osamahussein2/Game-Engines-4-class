@@ -140,6 +140,8 @@ void PrimaryEngine::OnDestroy()
 {
 	HandleShaders::GetInstance()->OnDestroy();
 	HandleTextures::GetInstance()->OnDestroy();
+	SceneGraph::GetInstance()->OnDestroy();
+	MaterialHandler::GetInstance()->OnDestroy();
 
 	// Clean up or delete window
 

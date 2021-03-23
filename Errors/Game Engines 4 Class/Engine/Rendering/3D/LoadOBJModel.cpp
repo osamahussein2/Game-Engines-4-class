@@ -3,7 +3,7 @@
 LoadOBJModel::LoadOBJModel() : vertices(std::vector<glm::vec3>()), normals(std::vector<glm::vec3>()), 
 textureCoords(std::vector<glm::vec2>()), indices(std::vector<unsigned int>()), normalIndices(std::vector<unsigned int>()), 
 textureIndices(std::vector<unsigned int>()), meshVertices(std::vector<Vertex>()), subMeshes(std::vector<SubMesh>()), 
-currentTexture(0)
+currentTexture(0) // replace it with currentMaterial(Material())
 {
 	vertices.reserve(200);
 	normals.reserve(200);
@@ -51,7 +51,7 @@ void LoadOBJModel::PostProcessing()
 	SubMesh mesh;
 	mesh.vertexList = meshVertices;
 	mesh.meshIndices = indices;
-	mesh.textureID = currentTexture;
+	mesh.textureID = currentTexture; // replace this with mesh.material = currentMaterial (from the week 10 videos)
 
 	subMeshes.push_back(mesh);
 
@@ -60,7 +60,7 @@ void LoadOBJModel::PostProcessing()
 	textureIndices.clear();
 	meshVertices.clear();
 
-	currentTexture = 0;
+	currentTexture = 0; // replace this with currentMaterial = Material();
 }
 
 void LoadOBJModel::LoadModel(const std::string& filePath_)
@@ -97,15 +97,10 @@ void LoadOBJModel::LoadModel(const std::string& filePath_)
 		if (line.substr(0, 2) == "f ") {
 			std::stringstream f(line.substr(2));
 
-			unsigned int vertexIndex[3], textureIndex[3], normalIndex[3];
-
-			vertexIndex[0] = 1; vertexIndex[1] = 2; vertexIndex[2] = 3;
-			normalIndex[0] = 1; normalIndex[1] = 1; normalIndex[2] = 1;
+			int vertexIndex[3], textureIndex[3], normalIndex[3];
 
 			f >> vertexIndex[0] >> textureIndex[0] >> normalIndex[0] >> vertexIndex[1] >> textureIndex[1] >> normalIndex[1]
-				>> vertexIndex[2] >> textureIndex[2] >> normalIndex[2];
-
-			textureIndex[0] = 1; textureIndex[1] = 2; textureIndex[2] = 3;
+				>> vertexIndex[2] >> textureIndex[2] >> normalIndex[2]; 
 
 			indices.push_back(vertexIndex[0] - 1);
 			textureIndices.push_back(textureIndex[0] - 1);
@@ -135,7 +130,7 @@ void LoadOBJModel::LoadMaterial(const std::string& matName_)
 	if (currentTexture == 0) {
 		HandleTextures::GetInstance()->CreateTextures(matName_, "Resources/Textures/" + matName_ + ".png");
 		currentTexture = HandleTextures::GetInstance()->GetTextures(matName_);
-	}
+	} // replace this whole code with currentMaterial = MaterialHandler::GetInstance()->GetMaterial(matName_);
 }
 
 void LoadOBJModel::LoadMaterialLibrary(const std::string& matFilePath_)
@@ -150,5 +145,5 @@ void LoadOBJModel::LoadMaterialLibrary(const std::string& matFilePath_)
 			LoadMaterial(line.substr(7));
 		}
 	}
-	in.close();
+	in.close(); // MaterialHandler::LoadMaterial(matFilePath_);
 }
