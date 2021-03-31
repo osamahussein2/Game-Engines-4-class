@@ -25,9 +25,9 @@ Mesh::~Mesh()
 
 void Mesh::Render(Camera* camera_, std::vector<glm::mat4>& instances_)
 {
-	glUniform1i(textureLoc, 0);
+	glUniform1i(diffuseMapLoc, 0);
 	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, subMesh.textureID); // Use subMesh.material.diffuseMap
+	glBindTexture(GL_TEXTURE_2D, subMesh.material.diffuseMap); // Use subMesh.material.diffuseMap
 
 	// Renders the mesh triangles
 
@@ -44,6 +44,12 @@ void Mesh::Render(Camera* camera_, std::vector<glm::mat4>& instances_)
 	glUniform1f(diffuseLightLoc, camera_->ListOfLightSources()[0]->GetDiffuseLight());
 	glUniform1f(specularLightLoc, camera_->ListOfLightSources()[0]->GetSpecularLight());
 	glUniform3fv(lightColourLoc, 1, glm::value_ptr(camera_->ListOfLightSources()[0]->GetLightColor()));
+
+	glUniform1f(shininessLoc, subMesh.material.shininess);
+	glUniform1f(transparencyLoc, subMesh.material.transparency);
+	glUniform3fv(ambientLoc, 1, glm::value_ptr(subMesh.material.ambient));
+	glUniform3fv(diffuseLoc, 1, glm::value_ptr(subMesh.material.diffuse));
+	glUniform3fv(specularLoc, 1, glm::value_ptr(subMesh.material.specular));
 
 	for (int i = 0; i < instances_.size(); i++) {
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(instances_[i]));
@@ -89,4 +95,11 @@ void Mesh::GenerateBuffers()
 	diffuseLightLoc = glGetUniformLocation(shaderProgram, "light.diffuseLight");
 	specularLightLoc = glGetUniformLocation(shaderProgram, "light.specularLight");
 	lightColourLoc = glGetUniformLocation(shaderProgram, "light.lightColor");
+
+	diffuseMapLoc = glGetUniformLocation(shaderProgram, "material.diffuseMap");
+	shininessLoc = glGetUniformLocation(shaderProgram, "material.shininess");
+	transparencyLoc = glGetUniformLocation(shaderProgram, "material.transparency");
+	ambientLoc = glGetUniformLocation(shaderProgram, "material.ambient");
+	diffuseLoc = glGetUniformLocation(shaderProgram, "material.diffuse");
+	specularLoc = glGetUniformLocation(shaderProgram, "material.specular");
 }

@@ -27,11 +27,11 @@ private:
 	SceneGraph();
 	~SceneGraph();
 
-	/*static std::unique_ptr<SceneGraph> sceneGraphInstance;
+	static std::unique_ptr<SceneGraph> sceneGraphInstance;
 	friend std::default_delete<SceneGraph>;
 
 	static std::unordered_map<GLuint, std::vector<Model*>> sceneModels;
-	static std::map<std::string, GameObject*> sceneGameObjects;*/
+	static std::map<std::string, GameObject*> sceneGameObjects;
 };
 
 #endif // !SCENEGRAPH_H

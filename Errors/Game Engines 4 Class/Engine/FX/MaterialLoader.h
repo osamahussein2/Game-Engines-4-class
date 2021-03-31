@@ -4,6 +4,7 @@
 #include "../Core/Graphics/MaterialHandler.h"
 #include "../Core/Graphics/HandleTextures.h"
 #include <sstream>
+#include <vector>
 
 class MaterialLoader
 {

@@ -19,6 +19,9 @@ public:
 	void AddLightSource(LightSource* lightSource_);
 	std::vector<LightSource*> ListOfLightSources() const;
 
+	void ProcessMouseMovement(glm::vec2 offset_);
+	void ProcessMouseZoom(int y_);
+
 	glm::mat4 GetView() const;
 	glm::mat4 GetPersective() const;
 	glm::mat4 GetOrthographic() const;

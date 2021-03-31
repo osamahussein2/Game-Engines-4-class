@@ -265,17 +265,17 @@ bool GameScene::OnCreate()
 	// I've added extra lines of code to show how these new functions work (e.g. scale, rotation, angle)
 	// The reason why I included the set angle code is to show the shaders for the different vertices of the cube
 
-    /*Model* diceModel = new Model("Resources/Models/Dice.obj", "Resources/Materials/Dice.mtl",
-	HandleShaders::GetInstance()->GetShader("basicShader"));*/
+    Model* diceModel = new Model("Resources/Models/Dice.obj", "Resources/Materials/Dice.mtl",
+	HandleShaders::GetInstance()->GetShader("basicShader"));
 
-	model = new Model("Resources/Models/Apple.obj", "Resources/Materials/Apple.mtl", 
+	Model* appleModel = new Model("Resources/Models/Apple.obj", "Resources/Materials/Apple.mtl", 
 		HandleShaders::GetInstance()->GetShader("basicShader"));
 
-	/*SceneGraph::GetInstance()->AddModel(diceModel);
+	SceneGraph::GetInstance()->AddModel(diceModel);
 	SceneGraph::GetInstance()->AddModel(appleModel);
 
-	SceneGraph::GetInstance()->AddGameObject(new GameObject(diceModel, glm::vec3(-2.0f, 0.0f, 0.0f)));
-	SceneGraph::GetInstance()->AddGameObject(new GameObject(appleModel, glm::vec3(1.5f, 0.0f, 0.0f), "Apple"));*/
+	SceneGraph::GetInstance()->AddGameObject(new GameObject(diceModel, glm::vec3(-1.0f, 0.0f, 0.0f)));
+	SceneGraph::GetInstance()->AddGameObject(new GameObject(appleModel, glm::vec3(1.5f, 0.0f, 0.0f)), "Apple");
 
 	/*SubMesh subMesh;
 	subMesh.vertexList = vertexList;
@@ -285,10 +285,10 @@ bool GameScene::OnCreate()
 	//model->SetScale(glm::vec3(0.5f));
 	//model->SetRotation(glm::vec3(90.0f));
 	//model->SetAngle(30.0f);
-	shape = new GameObject(model);
+	//shape = new GameObject(model);
 	
-	/*diceModel = nullptr;
-	appleModel = nullptr;*/
+	diceModel = nullptr;
+	appleModel = nullptr;
 
 	// Print to the console that game scene is on screen
 	std::cout << "game scene" << std::endl;
@@ -298,19 +298,20 @@ bool GameScene::OnCreate()
 
 void GameScene::Update(const float deltaTime_)
 {
-	//SceneGraph::GetInstance()->Update(deltaTime_);
+	SceneGraph::GetInstance()->Update(deltaTime_);
 
-	shape->Update(deltaTime_);
+	//shape->Update(deltaTime_);
 
 	// Update the game scene timer
-	std::cout << "game scene timer: " << deltaTime_ << std::endl;
+	//std::cout << "game scene timer: " << deltaTime_ << std::endl;
 	
 }
 
 void GameScene::Render()
 {
-	//SceneGraph::GetInstance()->Render(PrimaryEngine::GetInstance()->GetCamera());
+	// Render the model & game Objects into the scene
+	SceneGraph::GetInstance()->Render(PrimaryEngine::GetInstance()->GetCamera());
 
 	// Render the triangle inside this scene
-	shape->Render(PrimaryEngine::GetInstance()->GetCamera());
+	//shape->Render(PrimaryEngine::GetInstance()->GetCamera());
 }

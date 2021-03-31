@@ -35,6 +35,10 @@ bool PrimaryEngine::OnCreate(std::string name_, int width_, int height_)
 		return isRunning = false;
 	}
 
+	SDL_WarpMouseInWindow(window->GetWindow(), window->GetWidth() / 2, window->GetHeight() / 2);
+
+	MouseEventListener::RegisterEngineObject(this);
+
 	HandleShaders::GetInstance()->CreateProgram("colourShader", "Engine/Shaders/ColorVertexShader.glsl", 
 		"Engine/Shaders/ColorFragShader.glsl");
 
@@ -58,6 +62,7 @@ void PrimaryEngine::Run()
 {
 	while (isRunning) {
 		timer.UpdateFrameTicks();
+		EventListener::Update();
 		Update(timer.GetDeltaTime()); // 1 second / 60 frames = 0.016
 		Render();
 		SDL_Delay(timer.GetSleepTime(fps));
@@ -115,17 +120,39 @@ void PrimaryEngine::SetCamera(Camera* camera_)
 	camera = camera_;
 }
 
+void PrimaryEngine::NotifyOfMousePressed(glm::ivec2 mouse_, int buttonType_)
+{
+}
+
+void PrimaryEngine::NotifyOfMouseReleased(glm::ivec2 mouse_, int buttonType_)
+{
+}
+
+void PrimaryEngine::NotifyOfMouseMove(glm::ivec2 mouse_)
+{
+	if (camera) {
+		camera->ProcessMouseMovement(MouseEventListener::GetMouseOffset());
+	}
+}
+
+void PrimaryEngine::NotifyOfMouseScroll(int y_)
+{
+	if (camera) {
+		camera->ProcessMouseZoom(y_);
+	}
+}
+
 void PrimaryEngine::Update(const float deltaTime_)
 {
 	if (gameInterface) {
 		gameInterface->Update(deltaTime_);
-		std::cout << deltaTime_ << std::endl;
+		//std::cout << deltaTime_ << std::endl;
 	}
 }
 
 void PrimaryEngine::Render()
 {
-	glClearColor(1.0f, 0.0f, 0.0f, 1.0f); // glColor will decide with color I want to use depending on the RGBA values
+	glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // glColor will decide with color I want to use depending on the RGBA values
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // glClear clears the color buffer
 
 	if (gameInterface) {

@@ -1,10 +1,10 @@
 #include "SceneGraph.h"
 
-//std::unique_ptr<SceneGraph> sceneGraphInstance = nullptr;
-//std::unordered_map<GLuint, std::vector<Model*>> SceneGraph::sceneModels = 
-//std::unordered_map<GLuint, std::vector<Model*>>();
-//std::map<std::string, GameObject*> SceneGraph::sceneGameObjects =
-//std::map<std::string, GameObject*>();
+std::unique_ptr<SceneGraph> SceneGraph::sceneGraphInstance = nullptr;
+std::unordered_map<GLuint, std::vector<Model*>> SceneGraph::sceneModels = 
+std::unordered_map<GLuint, std::vector<Model*>>();
+std::map<std::string, GameObject*> SceneGraph::sceneGameObjects =
+std::map<std::string, GameObject*>();
 
 SceneGraph::SceneGraph()
 {
@@ -17,16 +17,15 @@ SceneGraph::~SceneGraph()
 
 SceneGraph* SceneGraph::GetInstance()
 {
-	/*if (sceneGraphInstance.get() == nullptr) {
+	if (sceneGraphInstance.get() == nullptr) {
 		sceneGraphInstance.reset(new SceneGraph);
-	}*/
-	//return sceneGraphInstance.get();
-	return nullptr;
+	}
+	return sceneGraphInstance.get();
 }
 
 void SceneGraph::OnDestroy()
 {
-	/*if (sceneGameObjects.size() > 0) {
+	if (sceneGameObjects.size() > 0) {
 		for (auto gameObject : sceneGameObjects) {
 			delete gameObject.second;
 			gameObject.second = nullptr;
@@ -44,23 +43,22 @@ void SceneGraph::OnDestroy()
 			}
 		}
 		sceneModels.clear();
-	}*/
+	}
 }
 
 void SceneGraph::AddModel(Model* model_)
 {
-	/*GLuint shader = model_->GetShaderProgram();
+	GLuint shader = model_->GetShaderProgram();
 	if (sceneModels.find(shader) == sceneModels.end()) {
 		sceneModels.insert(std::pair<GLuint, std::vector<Model*>>(shader, std::vector<Model*>()));
 		sceneModels[shader].reserve(10);
-		sceneModels[shader].push_back(model_);
 	}
-	sceneModels[shader].push_back(model_);*/
+	sceneModels[shader].push_back(model_);
 }
 
 void SceneGraph::AddGameObject(GameObject* gameObject_, std::string tag_)
 {
-	/*if (tag_ == "") {
+	if (tag_ == "") {
 		std::string newTag = "GameObject" + std::to_string(sceneGameObjects.size() + 1);
 		gameObject_->SetTag(newTag);
 		sceneGameObjects[newTag] = gameObject_;
@@ -75,30 +73,30 @@ void SceneGraph::AddGameObject(GameObject* gameObject_, std::string tag_)
 		std::string newTag = "GameObject" + std::to_string(sceneGameObjects.size() + 1);
 		gameObject_->SetTag(newTag);
 		sceneGameObjects[newTag] = gameObject_;
-	}*/
+	}
 }
 
 GameObject* SceneGraph::GetGameObject(std::string tag_)
 {
-	/*if (sceneGameObjects.find(tag_) != sceneGameObjects.end()) {
+	if (sceneGameObjects.find(tag_) != sceneGameObjects.end()) {
 		return sceneGameObjects[tag_];
-	}*/
+	}
 	return nullptr;
 }
 
 void SceneGraph::Update(const float deltaTime_)
 {
-	/*for (auto gameObject : sceneGameObjects) {
+	for (auto gameObject : sceneGameObjects) {
 		gameObject.second->Update(deltaTime_);
-	}*/
+	}
 }
 
 void SceneGraph::Render(Camera* camera_)
 {
-	/*for (auto entry : sceneModels) {
+	for (auto entry : sceneModels) {
 		glUseProgram(entry.first);
 		for (auto model : entry.second) {
 			model->Render(camera_);
 		}
-	}*/
+	}
 }

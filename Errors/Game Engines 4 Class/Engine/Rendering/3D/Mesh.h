@@ -37,6 +37,8 @@ private:
 	GLuint modelLoc, viewLoc, projectionLoc, textureLoc,
 		viewPositionVectorLoc, lightPositionLoc, ambientLightLoc, diffuseLightLoc, specularLightLoc, lightColourLoc;
 
+	GLuint  diffuseMapLoc, shininessLoc, transparencyLoc, ambientLoc, diffuseLoc, specularLoc;
+
 };
 
 #endif // !MESH_H
