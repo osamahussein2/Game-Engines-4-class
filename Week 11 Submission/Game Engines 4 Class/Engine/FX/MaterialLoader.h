@@ -1,0 +1,25 @@
+#ifndef MATERIALLOADER_H
+#define MATERIALLOADER_H
+
+#include "../Core/Graphics/MaterialHandler.h"
+#include "../Core/Graphics/HandleTextures.h"
+#include <sstream>
+#include <vector>
+
+class MaterialLoader
+{
+public:
+	MaterialLoader(const MaterialLoader&) = delete;
+	MaterialLoader(MaterialLoader&&) = delete;
+	MaterialLoader& operator=(const MaterialLoader&) = delete;
+	MaterialLoader& operator=(MaterialLoader&&) = delete;
+
+	MaterialLoader() = delete;
+	~MaterialLoader();
+
+	static void LoadMaterial(std::string filePath_);
+private:
+	static GLuint LoadTexture(std::string fileName_);
+};
+
+#endif // !MATERIALLOADER_H
