@@ -60,6 +60,11 @@ void Camera::SetRotation(float yaw_, float pitch_)
 	UpdateCameraVectors();
 }
 
+void Camera::SetFrustum(Frustum* frustum_)
+{
+	frustum = frustum_;
+}
+
 void Camera::AddLightSource(LightSource* lightSource_)
 {
 	light[0].push_back(lightSource_); 
@@ -124,6 +129,21 @@ glm::mat4 Camera::GetOrthographic() const
 glm::vec3 Camera::GetPosition() const
 {
 	return position;
+}
+
+Frustum* Camera::GetPersectiveFrustum() const
+{
+	return frustum;
+}
+
+float Camera::GetNearPlane() const
+{
+	return nearPlane;
+}
+
+float Camera::GetFarPlane() const
+{
+	return farPlane;
 }
 
 void Camera::UpdateCameraVectors()

@@ -85,15 +85,15 @@ void LoadOBJModel::LoadModel(const std::string& filePath_)
 			vertices.push_back(glm::vec3(x, y, z));
 
 			if (glm::vec3(x, y, z) != boundingBox.minVert) {
-				boundingBox.minVert.x = x;
-				boundingBox.minVert.y = y;
-				boundingBox.minVert.z = z;
+				boundingBox.minVert.x = std::min(boundingBox.minVert.x, x);
+				boundingBox.minVert.y = std::min(boundingBox.minVert.y, y);
+				boundingBox.minVert.z = std::min(boundingBox.minVert.z, z);
 			}
 
 			if (glm::vec3(x, y, z) != boundingBox.maxVert) {
-				boundingBox.maxVert.x = x;
-				boundingBox.maxVert.y = y;
-				boundingBox.maxVert.z = z;
+				boundingBox.maxVert.x = std::max(boundingBox.maxVert.x, x);
+				boundingBox.maxVert.y = std::max(boundingBox.maxVert.y, y);
+				boundingBox.maxVert.z = std::max(boundingBox.maxVert.z, z);
 			}
 		}
 		// NORMAL DATA

@@ -17,13 +17,15 @@ GameScene::~GameScene()
 bool GameScene::OnCreate()
 {
 	PrimaryEngine::GetInstance()->SetCamera(new Camera());
-	PrimaryEngine::GetInstance()->GetCamera()->SetPosition(glm::vec3(0.0f, 0.0f, 4.0f));
+	PrimaryEngine::GetInstance()->GetCamera()->SetPosition(glm::vec3(0.0f, 0.0f, 6.0f));
 	/*HandleTextures::GetInstance()->CreateTextures("CheckerboardTexture",
 		"./Resources/Textures/CheckerboardTexture.png");*/
 
-	PrimaryEngine::GetInstance()->GetCamera()->AddLightSource(new LightSource(glm::vec3(0.0f, 0.0f, 2.0f), 
+	PrimaryEngine::GetInstance()->GetCamera()->AddLightSource(new LightSource(glm::vec3(0.0f, 0.0f, 2.0f),
 		0.1f, 0.5f, 0.5f,
 		glm::vec3(1.0f, 1.0f, 1.0f)));
+
+	CollisionHandler::GetInstance()->OnCreate();
 
 
 	// Cube model is implemented here
@@ -265,17 +267,26 @@ bool GameScene::OnCreate()
 	// I've added extra lines of code to show how these new functions work (e.g. scale, rotation, angle)
 	// The reason why I included the set angle code is to show the shaders for the different vertices of the cube
 
-    Model* diceModel = new Model("Resources/Models/Dice.obj", "Resources/Materials/Dice.mtl",
-	HandleShaders::GetInstance()->GetShader("basicShader"));
+	Model* diceModel = new Model("Resources/Models/Dice.obj", "Resources/Materials/Dice.mtl",
+		HandleShaders::GetInstance()->GetShader("basicShader"));
 
-	Model* appleModel = new Model("Resources/Models/Apple.obj", "Resources/Materials/Apple.mtl", 
+	Model* appleModel = new Model("Resources/Models/Apple.obj", "Resources/Materials/Apple.mtl",
 		HandleShaders::GetInstance()->GetShader("basicShader"));
 
 	SceneGraph::GetInstance()->AddModel(diceModel);
 	SceneGraph::GetInstance()->AddModel(appleModel);
 
-	SceneGraph::GetInstance()->AddGameObject(new GameObject(diceModel, glm::vec3(-1.0f, 0.0f, 0.0f)));
+	SceneGraph::GetInstance()->AddGameObject(new GameObject(diceModel, glm::vec3(-1.5f, 0.0f, 0.0f)), "Dice");
 	SceneGraph::GetInstance()->AddGameObject(new GameObject(appleModel, glm::vec3(1.5f, 0.0f, 0.0f)), "Apple");
+
+	Frustum* frustumDice = new Frustum(); 
+	Frustum* frustumApple = new Frustum();
+
+	BoundingBox* boundingBox = new BoundingBox();
+
+	frustumDice->IsBoxVisible(diceModel, glm::vec3(boundingBox->minVert), glm::vec3(boundingBox->maxVert));
+	frustumApple->IsBoxVisible(appleModel, glm::vec3(boundingBox->minVert), glm::vec3(boundingBox->maxVert));
+
 
 	/*SubMesh subMesh;
 	subMesh.vertexList = vertexList;
