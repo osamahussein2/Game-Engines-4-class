@@ -279,15 +279,6 @@ bool GameScene::OnCreate()
 	SceneGraph::GetInstance()->AddGameObject(new GameObject(diceModel, glm::vec3(-1.5f, 0.0f, 0.0f)), "Dice");
 	SceneGraph::GetInstance()->AddGameObject(new GameObject(appleModel, glm::vec3(1.5f, 0.0f, 0.0f)), "Apple");
 
-	Frustum* frustumDice = new Frustum(); 
-	Frustum* frustumApple = new Frustum();
-
-	BoundingBox* boundingBox = new BoundingBox();
-
-	frustumDice->IsBoxVisible(diceModel, glm::vec3(boundingBox->minVert), glm::vec3(boundingBox->maxVert));
-	frustumApple->IsBoxVisible(appleModel, glm::vec3(boundingBox->minVert), glm::vec3(boundingBox->maxVert));
-
-
 	/*SubMesh subMesh;
 	subMesh.vertexList = vertexList;
 	subMesh.textureID = HandleTextures::GetInstance()->GetTextures("CheckerboardTexture");
@@ -302,7 +293,7 @@ bool GameScene::OnCreate()
 	appleModel = nullptr;
 
 	// Print to the console that game scene is on screen
-	std::cout << "game scene" << std::endl;
+	//std::cout << "game scene" << std::endl;
 	
 	return true;
 }
@@ -310,6 +301,12 @@ bool GameScene::OnCreate()
 void GameScene::Update(const float deltaTime_)
 {
 	SceneGraph::GetInstance()->Update(deltaTime_);
+
+	Frustum* appleFrustum = new Frustum();
+	Frustum* diceFrustum = new Frustum();
+
+	appleFrustum->findSphere(1.5f, 0.0f, 0.0f, 1.0f);
+	diceFrustum->findCube(-1.5, 0.0f, 0.0f, 0.0f);
 
 	//shape->Update(deltaTime_);
 

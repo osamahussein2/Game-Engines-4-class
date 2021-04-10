@@ -30,7 +30,7 @@ void MouseEventListener::Update(SDL_Event event_)
 		UpdateMousePosition();
 		NotifyOfMouseMove();
 	}
-	else if (event_.type == SDL_MOUSEMOTION) {
+	else if (event_.type == SDL_MOUSEWHEEL) {
 		UpdateMousePosition();
 		NotifyOfMouseScroll(event_.wheel.y);
 	}

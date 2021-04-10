@@ -15,7 +15,7 @@ StartScene::~StartScene()
 bool StartScene::OnCreate()
 {
 	// Print to the console that start scene is on screen
-	std::cout << "start scene" << std::endl;
+	//std::cout << "start scene" << std::endl;
 	
 	// Get game scene on screen
 
