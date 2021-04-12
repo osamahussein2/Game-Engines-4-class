@@ -315,10 +315,9 @@ void GameScene::Render()
 	SceneGraph::GetInstance()->Render(PrimaryEngine::GetInstance()->GetCamera());
 
 	// I can't get the frustum to work
-	/*Frustum* appleFrustum = new Frustum();
-	Frustum* diceFrustum = new Frustum();
+	Frustum* frustum = new Frustum();
 
-	appleFrustum->checkBox(0.0f, 0.0f, 0.0f, 0.0f);*/
+	frustum->checkBox();
 
 	// Render the triangle inside this scene
 	//shape->Render(PrimaryEngine::GetInstance()->GetCamera());

@@ -1,5 +1,6 @@
 #include "Frustum.h"
 #include "../Camera/Camera.h"
+#include "BoundingBox.h"
 
 Frustum::Frustum()
 {
@@ -62,40 +63,42 @@ void Frustum::CalculateFrustum()
 
 }
 
-bool Frustum::checkBox(float x, float y, float z, float size)
+bool Frustum::checkBox()
 {
 	for (int i = 0; i < 6; i++)
 	{
+		BoundingBox* box = new BoundingBox();
+
 		// Check to see if the planes of the box are inside of the frustum
-		if (frustum[i] * (x - size) + frustum[i] * (y - size) + frustum[i] * (z - size) + frustum[i] > 0)
+		if (frustum[i] * (box->maxVert.x - box->minVert.x) + frustum[i] * (box->maxVert.y - box->minVert.y) + frustum[i] * (box->maxVert.z - box->minVert.z) + frustum[i] > 0)
 		{
 			continue;
 		}
-		if (frustum[i] * (x + size) + frustum[i] * (y - size) + frustum[i] * (z - size) + frustum[i] > 0)
+		if (frustum[i] * (box->maxVert.x + box->minVert.x) + frustum[i] * (box->maxVert.y - box->minVert.y) + frustum[i] * (box->maxVert.z - box->minVert.z) + frustum[i] > 0)
 		{
 			continue;
 		}
-		if (frustum[i] * (x - size) + frustum[i] * (y + size) + frustum[i] * (z - size) + frustum[i] > 0)
+		if (frustum[i] * (box->maxVert.x - box->minVert.x) + frustum[i] * (box->maxVert.y + box->minVert.y) + frustum[i] * (box->maxVert.z - box->minVert.z) + frustum[i] > 0)
 		{
 			continue;
 		}
-		if (frustum[i] * (x + size) + frustum[i] * (y + size) + frustum[i] * (z - size) + frustum[i] > 0)
+		if (frustum[i] * (box->maxVert.x + box->minVert.x) + frustum[i] * (box->maxVert.y + box->minVert.y) + frustum[i] * (box->maxVert.z - box->minVert.z) + frustum[i] > 0)
 		{
 			continue;
 		}
-		if (frustum[i] * (x - size) + frustum[i] * (y - size) + frustum[i] * (z + size) + frustum[i] > 0)
+		if (frustum[i] * (box->maxVert.x - box->minVert.x) + frustum[i] * (box->maxVert.y - box->minVert.y) + frustum[i] * (box->maxVert.z + box->minVert.z) + frustum[i] > 0)
 		{
 			continue;
 		}
-		if (frustum[i] * (x + size) + frustum[i] * (y - size) + frustum[i] * (z + size) + frustum[i] > 0)
+		if (frustum[i] * (box->maxVert.x + box->minVert.x) + frustum[i] * (box->maxVert.y - box->minVert.y) + frustum[i] * (box->maxVert.z + box->minVert.z) + frustum[i] > 0)
 		{
 			continue;
 		}
-		if (frustum[i] * (x - size) + frustum[i] * (y + size) + frustum[i] * (z + size) + frustum[i] > 0)
+		if (frustum[i] * (box->maxVert.x - box->minVert.x) + frustum[i] * (box->maxVert.y + box->minVert.y) + frustum[i] * (box->maxVert.z + box->minVert.z) + frustum[i] > 0)
 		{
 			continue;
 		}
-		if (frustum[i] * (x + size) + frustum[i] * (y + size) + frustum[i] * (z + size) + frustum[i] > 0)
+		if (frustum[i] * (box->maxVert.x + box->minVert.x) + frustum[i] * (box->maxVert.y + box->minVert.y) + frustum[i] * (box->maxVert.z + box->minVert.z) + frustum[i] > 0)
 		{
 			continue;
 		}

@@ -1,34 +1,20 @@
-﻿  CollisionHandler.cpp
-  CollisionDectection.cpp
-  Camera.cpp
-  Debug.cpp
-  GameInterface.cpp
-  GameObject.cpp
-  EventListener.cpp
-  Frustum.cpp
-C:\Users\osama\source\repos\Game Engines 4 Class\Engine\Math\Frustum.cpp(35,134): warning C4552: '+': result of expression not used
-  GameScene.cpp
-  Game1.cpp
-  HandleShaders.cpp
-  HandleTextures.cpp
-  LightSource.cpp
-  LoadOBJModel.cpp
-  main.cpp
-  Window.cpp
+﻿  Camera.cpp
   PrimaryEngine.cpp
-  Timer.cpp
-C:\Users\osama\source\repos\Game Engines 4 Class\Engine\Core\Timer.cpp(31,36): warning C4244: 'initializing': conversion from 'float' to 'unsigned int', possible loss of data
-  Scene.cpp
-  StartScene.cpp
-  Generating Code...
-  Compiling...
+  EventListener.cpp
+  MouseEventListener.cpp
+  CollisionDectection.cpp
+  CollisionHandler.cpp
+  Frustum.cpp
+  GameObject.cpp
+  LoadOBJModel.cpp
   Mesh.cpp
 C:\Users\osama\source\repos\Game Engines 4 Class\Engine\Rendering\3D\Mesh.cpp(54,20): warning C4018: '<': signed/unsigned mismatch
   Model.cpp
 C:\Users\osama\source\repos\Game Engines 4 Class\Engine\Rendering\3D\Model.cpp(82,20): warning C4018: '<': signed/unsigned mismatch
   SceneGraph.cpp
-  MaterialHandler.cpp
-  MaterialLoader.cpp
-  MouseEventListener.cpp
+  Game1.cpp
+  GameScene.cpp
+  StartScene.cpp
+  main.cpp
   Generating Code...
   Game Engines 4 Class.vcxproj -> C:\Users\osama\source\repos\Game Engines 4 Class\Debug\Game Engines 4 Class.exe
