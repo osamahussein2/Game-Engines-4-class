@@ -302,12 +302,6 @@ void GameScene::Update(const float deltaTime_)
 {
 	SceneGraph::GetInstance()->Update(deltaTime_);
 
-	Frustum* appleFrustum = new Frustum();
-	Frustum* diceFrustum = new Frustum();
-
-	appleFrustum->findSphere(1.5f, 0.0f, 0.0f, 1.0f);
-	diceFrustum->findCube(-1.5, 0.0f, 0.0f, 0.0f);
-
 	//shape->Update(deltaTime_);
 
 	// Update the game scene timer
@@ -319,6 +313,12 @@ void GameScene::Render()
 {
 	// Render the model & game Objects into the scene
 	SceneGraph::GetInstance()->Render(PrimaryEngine::GetInstance()->GetCamera());
+
+	// I can't get the frustum to work
+	/*Frustum* appleFrustum = new Frustum();
+	Frustum* diceFrustum = new Frustum();
+
+	appleFrustum->checkBox(0.0f, 0.0f, 0.0f, 0.0f);*/
 
 	// Render the triangle inside this scene
 	//shape->Render(PrimaryEngine::GetInstance()->GetCamera());
