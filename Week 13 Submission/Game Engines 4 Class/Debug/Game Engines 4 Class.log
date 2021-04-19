@@ -1,0 +1,19 @@
+﻿  Camera.cpp
+  OctSpatialPartition.cpp
+  PrimaryEngine.cpp
+  EventListener.cpp
+  MouseEventListener.cpp
+  CollisionDectection.cpp
+  CollisionHandler.cpp
+  Frustum.cpp
+  GameObject.cpp
+  LoadOBJModel.cpp
+  Model.cpp
+C:\Users\osama\source\repos\Game Engines 4 Class\Engine\Rendering\3D\Model.cpp(82,20): warning C4018: '<': signed/unsigned mismatch
+  SceneGraph.cpp
+  Game1.cpp
+  GameScene.cpp
+  StartScene.cpp
+  main.cpp
+  Generating Code...
+  Game Engines 4 Class.vcxproj -> C:\Users\osama\source\repos\Game Engines 4 Class\Debug\Game Engines 4 Class.exe
