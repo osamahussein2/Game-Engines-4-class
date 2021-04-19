@@ -1,7 +1,7 @@
 #ifndef FRUSTUM_H
 #define FRUSTUM_H
 
-#include <glm/matrix.hpp>
+#include <glm/glm.hpp>
 #include <glew.h>
 #include <iostream>
 
@@ -12,11 +12,11 @@ protected:
 public:
 	Frustum();
 	~Frustum();
-	void CalculateFrustum();
+	void CalculateFrustum(glm::mat4 viewMatrix, glm::mat4 projectionMatrix);
 
 	bool checkBox();
 private:
-	float frustum[6]; // [0] = top / [1] = bottom / [2] = left/ [3] = right / [4] = near / [5] = far
+	glm::vec4 frustum[6]; // [0] = top / [1] = bottom / [2] = left/ [3] = right / [4] = near / [5] = far
 };
 
 #endif // !FRUSTUM_H

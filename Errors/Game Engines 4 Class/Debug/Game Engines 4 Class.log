@@ -1,20 +1,36 @@
-﻿  Camera.cpp
-  PrimaryEngine.cpp
-  EventListener.cpp
-  MouseEventListener.cpp
+﻿  CollisionHandler.cpp
   CollisionDectection.cpp
-  CollisionHandler.cpp
-  Frustum.cpp
+  Camera.cpp
+  Debug.cpp
+  GameInterface.cpp
   GameObject.cpp
+  EventListener.cpp
+  Frustum.cpp
+  GameScene.cpp
+  Game1.cpp
+  HandleShaders.cpp
+  HandleTextures.cpp
+  LightSource.cpp
   LoadOBJModel.cpp
+  main.cpp
+  Window.cpp
+  PrimaryEngine.cpp
+  Timer.cpp
+C:\Users\osama\source\repos\Game Engines 4 Class\Engine\Core\Timer.cpp(31,36): warning C4244: 'initializing': conversion from 'float' to 'unsigned int', possible loss of data
+  Scene.cpp
+  StartScene.cpp
+  Generating Code...
+  Compiling...
   Mesh.cpp
 C:\Users\osama\source\repos\Game Engines 4 Class\Engine\Rendering\3D\Mesh.cpp(54,20): warning C4018: '<': signed/unsigned mismatch
   Model.cpp
 C:\Users\osama\source\repos\Game Engines 4 Class\Engine\Rendering\3D\Model.cpp(82,20): warning C4018: '<': signed/unsigned mismatch
   SceneGraph.cpp
-  Game1.cpp
-  GameScene.cpp
-  StartScene.cpp
-  main.cpp
+  MaterialHandler.cpp
+  MaterialLoader.cpp
+  MouseEventListener.cpp
+  OctSpatialPartition.cpp
+C:\Users\osama\source\repos\Game Engines 4 Class\Engine\Core\OctSpatialPartition.cpp(177,6): error C2664: 'bool BoundingBox::Intersects(BoundingBox *)': cannot convert argument 1 from 'BoundingBox' to 'BoundingBox *'
+C:\Users\osama\source\repos\Game Engines 4 Class\Engine\Core\OctSpatialPartition.cpp(177,70): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+C:\Users\osama\source\repos\Game Engines 4 Class\Engine\Math\BoundingBox.h(22,14): message : see declaration of 'BoundingBox::Intersects'
   Generating Code...
-  Game Engines 4 Class.vcxproj -> C:\Users\osama\source\repos\Game Engines 4 Class\Debug\Game Engines 4 Class.exe

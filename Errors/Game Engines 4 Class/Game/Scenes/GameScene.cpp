@@ -17,7 +17,7 @@ GameScene::~GameScene()
 bool GameScene::OnCreate()
 {
 	PrimaryEngine::GetInstance()->SetCamera(new Camera());
-	PrimaryEngine::GetInstance()->GetCamera()->SetPosition(glm::vec3(0.0f, 0.0f, 6.0f));
+	PrimaryEngine::GetInstance()->GetCamera()->SetPosition(glm::vec3(0.0f, 0.0f, 4.0f));
 	/*HandleTextures::GetInstance()->CreateTextures("CheckerboardTexture",
 		"./Resources/Textures/CheckerboardTexture.png");*/
 
@@ -25,7 +25,7 @@ bool GameScene::OnCreate()
 		0.1f, 0.5f, 0.5f,
 		glm::vec3(1.0f, 1.0f, 1.0f)));
 
-	CollisionHandler::GetInstance()->OnCreate();
+	CollisionHandler::GetInstance()->OnCreate(100.0f);
 
 
 	// Cube model is implemented here
@@ -276,7 +276,7 @@ bool GameScene::OnCreate()
 	SceneGraph::GetInstance()->AddModel(diceModel);
 	SceneGraph::GetInstance()->AddModel(appleModel);
 
-	SceneGraph::GetInstance()->AddGameObject(new GameObject(diceModel, glm::vec3(-1.5f, 0.0f, 0.0f)), "Dice");
+	SceneGraph::GetInstance()->AddGameObject(new GameObject(diceModel, glm::vec3(-2.0f, 0.0f, -2.0f)), "Dice");
 	SceneGraph::GetInstance()->AddGameObject(new GameObject(appleModel, glm::vec3(1.5f, 0.0f, 0.0f)), "Apple");
 
 	/*SubMesh subMesh;
@@ -314,9 +314,8 @@ void GameScene::Render()
 	// Render the model & game Objects into the scene
 	SceneGraph::GetInstance()->Render(PrimaryEngine::GetInstance()->GetCamera());
 
-	// I can't get the frustum to work
+	// I can't get the frustum to work properly (For some reason, it keeps printing out not rendering)
 	Frustum* frustum = new Frustum();
-
 	frustum->checkBox();
 
 	// Render the triangle inside this scene
